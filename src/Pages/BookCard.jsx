@@ -80,7 +80,7 @@ function BookCard() {
                 return (
                   <div
                     key={index}
-                    className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-transform duration-300 scale-95 hover:scale-100 hover:shadow-lg"
+                    className="bg-white flex flex-col justify-between dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-transform duration-300 scale-95 hover:scale-100 hover:shadow-lg"
                   >
                     <div className="relative h-auto overflow-hidden">
                     <button
@@ -95,14 +95,14 @@ function BookCard() {
                           "https://via.placeholder.com/150"
                         }
                         alt={book.volumeInfo?.title || "No title available"}
-                        className="w-full h-76 overflow-hidden object-fit"
+                        className="w-full h-76 overflow-hidden shadow-lg object-fit"
                       />
                     </div>
 
                     {/* Wishlist Toggle Button */}
                     
 
-                    <p className="text-gray-600 font-semibold p-1 dark:text-gray-300 my-2">
+                    <p className="text-gray-600 line-clamp-2 font-semibold p-1.5 px-3 dark:text-gray-300 ">
                       {book.volumeInfo?.title || ""}
                     </p>
 
@@ -121,7 +121,7 @@ function BookCard() {
                         </span>
                         <button
                           onClick={() => handleAddToCart(book)}
-                          className="bg-blue-600  text-white px-3 py-2 rounded-md hover:bg-blue-700 transition duration-200"
+                          className="bg-blue-600 cursor-pointer text-white px-3 py-2 rounded-md hover:bg-blue-700 transition duration-200"
                         >
                           Add
                         </button>
@@ -129,7 +129,7 @@ function BookCard() {
 
                       <Link
                         to={`/book/${book.id}`}
-                        className="text-blue-500 underline mt-2 block"
+                        className="text-blue-500 text-sm underline mt-2 block"
                       >
                         View Details
                       </Link>
@@ -149,7 +149,7 @@ function BookCard() {
             <button
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
-              className="bg-gray-300 dark:bg-gray-700 px-4 py-2 rounded-md disabled:opacity-50"
+              className="bg-gray-300 text-sm font-semibold cursor-pointer dark:bg-gray-700 px-4 py-2 rounded-md disabled:opacity-50"
             >
               Previous
             </button>
@@ -161,7 +161,7 @@ function BookCard() {
                 setCurrentPage((prev) => Math.min(prev + 1, totalPages))
               }
               disabled={currentPage === totalPages}
-              className="bg-gray-300 dark:bg-gray-700 px-4 py-2 rounded-md disabled:opacity-50"
+              className="bg-gray-300 text-sm font-semibold cursor-pointer dark:bg-gray-700 px-4 py-2 rounded-md disabled:opacity-50"
             >
               Next
             </button>

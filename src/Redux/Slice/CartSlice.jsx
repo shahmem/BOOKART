@@ -28,8 +28,18 @@ const CartSlice = createSlice({
         }
       }
     },
+    increaseQuantity: (state, action) => {
+      const existingBook = state.find((book) => book.id === action.payload);
+      if (existingBook) {
+        if (existingBook.quantity > 0) {
+          existingBook.quantity += 1; // 
+        } else {
+          return state.filter((book) => book.id !== action.payload); 
+        }
+      }
+    },
   },
 });
 
-export const { addToCart, removeFromCart, decreaseQuantity } = CartSlice.actions;
+export const { addToCart, removeFromCart, decreaseQuantity,increaseQuantity } = CartSlice.actions;
 export default CartSlice.reducer;
